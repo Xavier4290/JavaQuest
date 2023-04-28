@@ -2,13 +2,14 @@ package Classes;
 
 import java.util.Scanner;
 
-public class Jogador extends Thread{
+public class Jogador{
 	protected int moeda;
 	private Scanner nome;
 	private int vida;
 	private int armadura;
 	private int stamina;
 	private int dano;
+    public String nome_classe;
 
 	
 	public Jogador() {
@@ -16,6 +17,9 @@ public class Jogador extends Thread{
 	}
 	public Jogador(String nome) {
 		
+	}
+	public void nome_classe(){
+		this.nome_classe = nome_classe;
 	}
 	public Jogador(Scanner nome) {
 		this.nome = nome;
@@ -87,14 +91,7 @@ public class Jogador extends Thread{
 	}
 	
 	/*Threads*/
-	
-	public void run() {
-		
-	}
-	public char[] atacar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 }
 	

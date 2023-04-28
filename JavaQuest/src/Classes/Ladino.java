@@ -8,6 +8,7 @@ public class Ladino extends Jogador{
 	private int armadura = 80;
 	private int stamina = 120;
 	private int dano = 8;
+	private String nome_classe = "ladino";
 	
 	public Ladino() {
 	

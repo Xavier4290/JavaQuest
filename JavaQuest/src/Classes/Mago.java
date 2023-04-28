@@ -8,7 +8,8 @@ public class Mago extends Jogador{
 	private int armadura = 80;
 	private int stamina = 90;
 	private int dano = 16;
-	
+	private String nome_classe = "mago";
+
 	public Mago() {
 		
 	}

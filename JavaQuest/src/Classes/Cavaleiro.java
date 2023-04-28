@@ -3,21 +3,26 @@ package Classes;
 import java.util.Scanner;
 
 public class Cavaleiro extends Jogador{
-	
 	private Scanner nome;
 	private int vida = 100;
 	private int armadura = 100;
 	private int stamina = 100;
 	private int dano = 10;
+	private String nome_classe = "cavaleiro";
 	
 	public Cavaleiro() {
-		
+
 	}
 	
 	public Cavaleiro(Scanner nome) {
 			this.nome = nome;
 	}
-	
+	public String getNomeClasse(){
+		return this.nome_classe;
+	}
+	public void nome_classe(){
+		this.nome_classe = nome_classe;
+	}
 	@Override
 	public void mostrarAtri() {
 		System.out.println("Vida: "+this.vida +"\n"
