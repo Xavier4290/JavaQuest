@@ -8,6 +8,7 @@ public class Bixo {
 
     public void Apanha(int dano){
         vida = vida-dano;
+        System.out.println("aiaiaiaii...");
         return;
     }
 }
