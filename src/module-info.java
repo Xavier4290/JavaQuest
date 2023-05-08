@@ -5,5 +5,5 @@
  * @author pa
  *
  */
-module JavaQuest {
+module FILHADAPUTA {
 }
