@@ -6,9 +6,13 @@ import java.util.Scanner;
 import Classes.Jogador;
 
 public class Combate {
+	
 	static Jogador jogador = new Jogador();
 	static Gerentes g1 = new Gerentes();
 
+	public Combate() {
+		
+	}
 	static int ataqueUsuario(){
 		Scanner leitor = new Scanner(System.in);
 		System.out.println("Escolha o ataque");
@@ -20,10 +24,10 @@ public class Combate {
 	}
 	// Quando o jogador vencer a batalha é acrescentado mais 20 pontos de vida
 	static void restauraVida() {
-		if(extracted().getVida() < 100) {
-			extracted().setVida(20);
+		if(jogador.getVida() < 100) {
+			jogador.setVida(20);
 		}else {
-			extracted().setVida(0);
+			jogador.setVida(0);
 		}
 	}
 
@@ -35,10 +39,10 @@ public class Combate {
 	}
 
 	//Vai mostrar a vida do mob e do Usuario mais os atributos do usuario
-	static void mostrarVida(int hpComputador, int i) {
+	static void mostrarVida(int gerente, int player) {
 		System.out.println("=========================");
-		System.out.println("Maquina "+hpComputador);
-		System.out.println("Usuario "+extracted().getVida());
+		System.out.println("Gerente "+ g1.getVida());
+		System.out.println("Usuario "+jogador.getVida());
 		System.out.println("=========================");
 	}
 
@@ -47,8 +51,8 @@ public class Combate {
 		int escolhaAtaque = 0;
 
 		//A batalha iniciara quando a vida do player e do mob for maior que 0
-		while(extracted().getVida() > 0 && g1.getVida() > 0) {
-			mostrarVida(g1.getVida(), extracted().getVida());
+		while(jogador.getVida() > 0 && g1.getVida() > 0) {
+			mostrarVida(g1.getVida(), jogador.getVida());
 			//Ataque do Usuario
 			escolhaAtaque = ataqueUsuario();
 			switch(escolhaAtaque) {
@@ -100,14 +104,15 @@ public class Combate {
 			}
 		}
 	}
-	private static Jogador extracted() {
-		return jogador;
-	}
+	// private static Jogador extracted() {
+	// 	return jogador;
+	// }
 	public static void main(String[] args) {
 		Scanner continuar_jogo = new Scanner(System.in);
 		int continua = 1;
 
 		while(continua == 1) {
+	
 			System.out.println("Deseja Continuar (1 - Sim / 0 - Não)");
 			continua = continuar_jogo.nextInt();
 			//esta chamando o metodo restaurar vida

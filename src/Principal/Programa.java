@@ -9,6 +9,7 @@ import Classes.Mago;
 import Fases.Movimento_Personagem;
 import Fases.get_status_mapa;
 import Inimigos.Eslaime;
+import Principal.Combate.Combate;
 
 public class Programa {
 	static Jogador menu_escolha(String nome_do_jogador) {
@@ -44,13 +45,27 @@ public class Programa {
 		return jogador_atualizado;
 	}
     public static void main(String[] args){
-		System.out.println("-----------------------\n" + "Aperte W para subir \n" + "Aperte S para ir descer \n"
-		+ "Aperte A para ir a esquerda \n" + "Aperte D para ir a direita \n" + "-----------------------");
-        System.out.println(
-            "Digite seu nome: \n"
-        );
-        String nome_do_jogador = (new Scanner(System.in)).nextLine();
-        Jogador player_escolhido = menu_escolha(nome_do_jogador);
-        (new Movimento_Personagem()).Andador();
-    }
+		// System.out.println("-----------------------\n" + "Aperte W para subir \n" + "Aperte S para ir descer \n"
+		// + "Aperte A para ir a esquerda \n" + "Aperte D para ir a direita \n" + "-----------------------");
+        // System.out.println(
+        //     "Digite seu nome: \n"
+        // );
+        // String nome_do_jogador = (new Scanner(System.in)).nextLine();
+        // Jogador player_escolhido = menu_escolha(nome_do_jogador);
+        // (new Movimento_Personagem()).Andador();
+	
+	System.out.println("Esolha o nome para o jogador");	
+    String nome_do_jogador = (new Scanner(System.in)).nextLine();
+    Jogador player_escolhido = menu_escolha(nome_do_jogador);
+	System.out.println("-----------------------\n" + "Aperte W para subir \n" + "Aperte S para ir descer \n"
+    + "Aperte A para ir a esquerda \n" + "Aperte D para ir a direita \n" + "-----------------------");
+    System.out.println(
+        "Digite seu nome: \n"
+    );
+	(new Movimento_Personagem()).Andador();
+    
+    
+	
+		
+	    }
 }
