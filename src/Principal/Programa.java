@@ -44,13 +44,13 @@ public class Programa {
 		return jogador_atualizado;
 	}
     public static void main(String[] args){
-		// System.out.println("-----------------------\n" + "Aperte W para subir \n" + "Aperte S para ir descer \n"
-		// + "Aperte A para ir a esquerda \n" + "Aperte D para ir a direita \n" + "-----------------------");
-        // System.out.println(
-        //     "Digite seu nome: \n"
-        // );
-        // String nome_do_jogador = (new Scanner(System.in)).nextLine();
-        // Jogador player_escolhido = menu_escolha(nome_do_jogador);
-        // (new Movimento_Personagem()).Andador();
+		System.out.println("-----------------------\n" + "Aperte W para subir \n" + "Aperte S para ir descer \n"
+		+ "Aperte A para ir a esquerda \n" + "Aperte D para ir a direita \n" + "-----------------------");
+        System.out.println(
+            "Digite seu nome: \n"
+        );
+        String nome_do_jogador = (new Scanner(System.in)).nextLine();
+        Jogador player_escolhido = menu_escolha(nome_do_jogador);
+        (new Movimento_Personagem()).Andador();
     }
 }

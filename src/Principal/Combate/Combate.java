@@ -2,11 +2,13 @@ package Principal.Combate;
 
 import java.util.Random;
 import java.util.Scanner;
-import Classes.Jogador;
-import Principal.Programa;
 
-public class Combate extends Programa{
+import Classes.Jogador;
+
+public class Combate {
 	static Jogador jogador = new Jogador();
+	static Gerentes g1 = new Gerentes();
+
 	static int ataqueUsuario(){
 		Scanner leitor = new Scanner(System.in);
 		System.out.println("Escolha o ataque");
@@ -18,46 +20,45 @@ public class Combate extends Programa{
 	}
 	// Quando o jogador vencer a batalha é acrescentado mais 20 pontos de vida
 	static void restauraVida() {
-		if(jogador.getVida() < 100) {
-			jogador.setVida(20);
+		if(extracted().getVida() < 100) {
+			extracted().setVida(20);
 		}else {
-			jogador.setVida(0);
+			extracted().setVida(0);
 		}
 	}
 
 	//Ataque do computador
 	static int ataqueComputador() {
 		Random gerador = new Random();
-		// retorna o numero de ataques entre 1 a 2
-		return gerador.nextInt(2) + 1; 
+		// retorna o numero de ataques entre 1 a 4
+		return gerador.nextInt(4) + 1; 
 	}
 
 	//Vai mostrar a vida do mob e do Usuario mais os atributos do usuario
 	static void mostrarVida(int hpComputador, int i) {
 		System.out.println("=========================");
 		System.out.println("Maquina "+hpComputador);
-		System.out.println("Usuario "+jogador.getVida());
+		System.out.println("Usuario "+extracted().getVida());
 		System.out.println("=========================");
 	}
 
 	//Sistema de batalha
 	static void batalha() {
-		int hpComputador = 100;
 		int escolhaAtaque = 0;
 
 		//A batalha iniciara quando a vida do player e do mob for maior que 0
-		while(jogador.getVida() > 0 && hpComputador > 0) {
-			mostrarVida(hpComputador, jogador.getVida());
+		while(extracted().getVida() > 0 && g1.getVida() > 0) {
+			mostrarVida(g1.getVida(), extracted().getVida());
 			//Ataque do Usuario
 			escolhaAtaque = ataqueUsuario();
 			switch(escolhaAtaque) {
 			case 1:
 				System.out.println("Usou o ataque leve");
-				hpComputador -= jogador.ataqueLeve(10);
+				g1.recebeDano(jogador.ataqueLeve(10));
 				break;
 			case 2:
 				System.out.println("Usou o ataque pesado");
-				hpComputador -= jogador.ataquePesado(10);
+				g1.recebeDano(jogador.ataquePesado(10));
 				break;
 			case 3:
 				System.out.println("Usou o aumentar defesa");
@@ -65,23 +66,31 @@ public class Combate extends Programa{
 				break;
 			case 4:
 				System.out.println("Usou o aumentar ataque");
-				hpComputador -= jogador.ataqueLeve(5) + jogador.aumentarForca(5);
+				g1.recebeDano(jogador.ataqueLeve(5) + jogador.aumentarForca(5)); 
 				break;
 			default:
 				System.out.println("Opção Invalida");
 				break;
 			}
 			//Ataque do mob
-			if(hpComputador > 0) {
+			if(g1.getVida() > 0) {
 				escolhaAtaque = ataqueComputador();
 				switch(escolhaAtaque) {
 				case 1:
-					System.out.println("Usou o mordida");
-					jogador.recebeAtaque(10);
+					System.out.println("Gerente usou ataque normal");
+					jogador.recebeAtaque(g1.ataqueNormal(10));
 					break;
 				case 2:
-					System.out.println("Usou acido");
-					jogador.recebeAtaque(15);
+					System.out.println("Gerente usou o ataque Forte");
+					 jogador.recebeAtaque(g1.ataqueNormal(10));
+					break;
+				case 3:
+					System.out.println("Gerente usou regenerar vida");
+					g1.regeneraVida(0);
+					break;
+				case 4:
+					System.out.println("Gerente usou furia");
+					g1.furia(0);
 					break;
 				}
 			}
@@ -90,6 +99,9 @@ public class Combate extends Programa{
 
 			}
 		}
+	}
+	private static Jogador extracted() {
+		return jogador;
 	}
 	public static void main(String[] args) {
 		Scanner continuar_jogo = new Scanner(System.in);

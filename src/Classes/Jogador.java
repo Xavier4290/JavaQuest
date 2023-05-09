@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Jogador{
 	protected int moeda;
 	private Scanner nome;
-	private int vida;
+	private int vida = 100;
 	private int armadura;
 	private int stamina;
 	private int dano;
