@@ -46,12 +46,12 @@ public class Cavaleiro extends Jogador{
 	}
 	@Override
 	// aumenta 35% do dano da classe
-	public void aumentarDano() {
+	public int aumentarForca(int buff) {
 		this.stamina -= 20;
-		this.dano *= 1.5;
+		return this.dano *= 1.5;
 	}
 	@Override
-	public void aumentaDefesa() {
+	public void aumentarDefesa(int buff) {
 		this.stamina -= 15;
 		this.vida -= 15;
 		this.armadura += 10;

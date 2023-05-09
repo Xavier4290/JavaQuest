@@ -24,12 +24,15 @@ public class Jogador{
 	public Jogador(Scanner nome) {
 		this.nome = nome;
 	}
-
-	public void  getMoeda() {
-		System.out.println("Moedas: "+this.moeda);
-	}
 	public Scanner getNome() {
 		return  this.nome;
+	}
+
+	public void recebeAtaque(int dano) {
+		this.vida -= dano;
+	}
+	public void  getMoeda() {
+		System.out.println("Moedas: "+this.moeda);
 	}
 	//Metodos que estão sendo herdados pelas classe, Cavaleiro,Mago,Ladino
 	public void mostrarNome(String nome) {
@@ -43,24 +46,26 @@ public class Jogador{
 	}
 	
 	// metodos que a classe Cavaleiro herdará
-	public void ataqueRapido() {
-		this.stamina -= 10;
+	//Ataques e buffs da classe Cavaleiro
+	public int ataqueLeve(int ataque) {
+		this.stamina -= 5;
+		return this.dano = 10;
 	}
 	
-	public void ataquePesado() {
+	public int ataquePesado(int ataque) {
 		this.stamina -= 15;
-		this.dano *= 1.2;
+		return this.dano *= 1.2;
 	}
 	
-	public void aumentaDefesa() {
+	public void aumentarDefesa(int buff) {
 		this.stamina -= 15;
 		this.vida -= 15;
 		this.armadura += 10;
 	}
 	// aumenta 35% do dano da classe
-	public void aumentarDano() {
+	public int aumentarForca(int buff) {
 		this.stamina -= 20;
-		this.dano *= 1.5;
+		return this.dano *= 1.5;
 	}
 	
 	//metodos que a classe Mago herdará
@@ -89,9 +94,14 @@ public class Jogador{
 		this.vida -= 20;
 		this.stamina += 30;
 	}
-	
-	/*Threads*/
 
+	public int getVida() {
+		return this.vida;
+	}
 	
+	public void setVida(int vida) {
+		 this.vida += vida;
+	}
+		
 }
 	
